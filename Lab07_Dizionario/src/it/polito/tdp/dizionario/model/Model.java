@@ -32,8 +32,8 @@ public class Model {
 //			if(s.compareTo(s1)!=0){
 //		    grafo.addEdge(s, s1);
 //		    }
-//		}
-		
+//	}
+
 		
 		
 		   

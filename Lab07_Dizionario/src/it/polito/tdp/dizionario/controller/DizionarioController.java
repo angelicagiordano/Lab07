@@ -62,7 +62,7 @@ public class DizionarioController {
 	void doTrovaVicini(ActionEvent event) {
 		
 		try {
-			txtResult.setText(model.displayNeighbours(inputParola.getText()).toString());
+			txtResult.setText( model.displayNeighbours(inputParola.getText()).toString());
 
 		} catch (RuntimeException re) {
 			txtResult.setText(re.getMessage());
