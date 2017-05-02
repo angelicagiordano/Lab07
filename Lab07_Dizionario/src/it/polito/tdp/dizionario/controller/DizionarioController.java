@@ -29,6 +29,8 @@ public class DizionarioController {
 	private Button btnTrovaVicini;
 	@FXML
 	private Button btnTrovaGradoMax;
+	@FXML
+	private Button btnTrovaTuttiVicini;
 
 	@FXML
 	void doReset(ActionEvent event) {
@@ -68,6 +70,17 @@ public class DizionarioController {
 			txtResult.setText(re.getMessage());
 		}
 	}
+	@FXML
+	void doTrovaTuttiVicini(ActionEvent event) {
+		
+		try {
+			txtResult.setText( model.displayAllNeighbours(inputParola.getText()).toString());
+
+		} catch (RuntimeException re) {
+			txtResult.setText(re.getMessage());
+		}
+	}
+
 
 	@FXML
 	void initialize() {
@@ -77,6 +90,8 @@ public class DizionarioController {
 		assert btnGeneraGrafo != null : "fx:id=\"btnGeneraGrafo\" was not injected: check your FXML file 'Dizionario.fxml'.";
 		assert btnTrovaVicini != null : "fx:id=\"btnTrovaVicini\" was not injected: check your FXML file 'Dizionario.fxml'.";
 		assert btnTrovaGradoMax != null : "fx:id=\"btnTrovaTutti\" was not injected: check your FXML file 'Dizionario.fxml'.";
+		assert btnTrovaTuttiVicini != null : "fx:id=\"btnTrovaVicini\" was not injected: check your FXML file 'Dizionario.fxml'.";
+		
 	}
 
 	public void setModel(Model model) {

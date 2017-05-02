@@ -1,6 +1,7 @@
 package it.polito.tdp.dizionario.model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.jgrapht.Graphs;
@@ -15,6 +16,9 @@ public class Model {
 	
 	UndirectedGraph<String, DefaultEdge> grafo = new SimpleGraph<String, DefaultEdge>(DefaultEdge.class); //tra parentesi specifico la classe del tipo di arco
 
+	List<String> tuttiVicini= new ArrayList<String>();
+	
+	
 
 	public List<String> createGraph(int numeroLettere) {
 
@@ -86,5 +90,51 @@ public class Model {
 			}
 		}
 		return ""+gradoMax;
+	}
+	public List <String> displayAllNeighbours(String parolaInserita){
+		//METODO 1
+//		List<String> daVisitare = new LinkedList<String>();
+//		List<String> visitati = new ArrayList<String>();
+//		
+//		daVisitare.add(parolaInserita);
+//		
+//		while(daVisitare.size()>0){
+//			String s1= daVisitare.get(0);
+//			for(String s: this.displayNeighbours(s1)){
+//				if(!visitati.contains(s)){
+//					visitati.add(s);
+//					
+//					daVisitare.addAll(this.displayNeighbours(s));
+//				}
+//			}
+//			daVisitare.remove(s1);
+//			
+//			}
+//		
+//		
+//		return visitati;
+		
+		
+		
+		//METODO 2 CON RICORSIONE
+		
+		recursive( parolaInserita);
+		tuttiVicini.remove(parolaInserita);
+		return tuttiVicini;
+		
+		
+		
+	} 
+	
+	private void recursive(String parola){
+		
+		for(String s: this.displayNeighbours(parola)){
+			if(!tuttiVicini.contains(s)){
+				tuttiVicini.add(s);
+				
+				recursive( s);
+			}
+		}
+		
 	}
 }
